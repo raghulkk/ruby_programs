@@ -13,8 +13,8 @@ class Doublelinkedlist
 			return
 		end
 		node = Node.new(data)
-		node.prev_node = current_node
 		current_node.next_node = node
+		node.prev_node = current_node
 		self.current_node = node
 	end
 	def delete(data)
@@ -48,6 +48,15 @@ class Doublelinkedlist
 	end
 	flag
 	end
+	def reverse
+		node = @root.next_node.next_node.next_node
+	while node
+		print "->{node.data}"
+		node = node.prev_node
+	end
+		print "\n"
+	end
+
 	def display
 	node = @root
 	return if node.nil?
@@ -69,6 +78,8 @@ l.display
 l.insert(15)
 l.display
 l.insert(20)
+l.display
+puts l.reverse
 l.display
 puts l.search(10)
 l.display
