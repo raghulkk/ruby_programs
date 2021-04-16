@@ -6,13 +6,15 @@ class Stack
 			@data = data
 		end
 	end
-		attr_accessor :head, :tail, :length
+		attr_accessor :head, :tail, :length, :max_length
 
-		def initialize
+		def initialize(max_length)
 		@length = 0
+		@max_length = max_length
 		end
 
 		def push(data)
+			return "stack is full" if full?
 			node = Node.new(data)
 			if length.nil?
 				@tail = node
@@ -21,6 +23,7 @@ class Stack
 			node.next_node = @head
 			@head = node
 			@length += 1
+			data
 		end
 
 		def pop(data)
@@ -30,16 +33,16 @@ class Stack
 				@tail = nil
 				@length -= 1
 			end
+				data
 		end
 
-		def full(data)
-			if length == data
-				puts "stack is full"
-			else
-				puts "not full"
-			end
+		def full?
+			length == max_length
 		end
 
+		def set_max_length(new_length)
+			@max_length = new_length
+		end
 
 		def display
 			node = @head
@@ -50,15 +53,16 @@ class Stack
 		end
 end
 
-s = Stack.new()
-s.push(1)
-s.push(2)
-s.push(3)
-s.push(4)
+s = Stack.new(4)
+puts s.full?
+puts s.push(1)
+puts s.push(2)
+puts s.push(3)
+puts s.push(4)
+puts s.push(5)
 s.display
 puts
-puts s.full(4)
-puts s.full(2) 
+puts s.full? 
 puts
 s.pop(4)
 s.display

@@ -51,7 +51,7 @@ class Doublelinkedlist
 	def reverse
 		node = @root.next_node.next_node.next_node
 	while node
-		print "->{node.data}"
+		print "->#{node.data}"
 		node = node.prev_node
 	end
 		print "\n"

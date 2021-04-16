@@ -34,6 +34,7 @@ class Stack
 			@length -= 1
 		end
 		data
+		display
 	end
 
 	def full?
@@ -43,6 +44,8 @@ class Stack
 	def set_max_length(new_length)
 		@max_length = new_length
 	end
+
+	private 
 
 	def display
 		node = @head
@@ -61,15 +64,16 @@ puts s.push(2)
 puts s.push(3)
 puts s.push(4)
 puts s.push(5)
-s.display
+s.send(:display)
 puts
 puts s.full?
 puts
 puts s.pop(4)
-puts s.display
+s.send(:display)
 puts
 puts s.pop(3)
-s.display
+s.send(:display)
+
 
 
 
